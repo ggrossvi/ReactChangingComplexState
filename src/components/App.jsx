@@ -7,8 +7,14 @@ function App() {
   });
 
   function handleChange(event) {
-    const newValue = event.target.value;
-    const inputName = event.target.name;
+    // const newValue = event.target.value;
+    // const inputName = event.target.name;
+
+    //replaced above with below destructuring
+    const { value, name } = event.target;
+
+    // you can't access anything in the event object
+
     // console.log(newValue);
     // console.log(inputName);
     //  below resuts in the field not written to be deleted
@@ -20,15 +26,15 @@ function App() {
     //   }
 
     setFullName((preValue) => {
-      if (inputName === "fname") {
+      if (name === "fName") {
         return {
-          fName: newValue,
+          fName: value,
           lName: preValue.lName
         };
-      } else if (inputName === "lName") {
+      } else if (name === "lName") {
         return {
-          fName: prevValue.fName,
-          lname: newValue
+          fName: preValue.fName,
+          lname: value
         };
       }
       // console.log(prevValue);
